@@ -5,3 +5,7 @@ void unsignError() {
     for (unsigned u = 10; u >= 0; --u)
         std::cout << u << std::endl;
 }
+
+void testString(std::string const& str) {
+    // str[0] = 'a';
+}
