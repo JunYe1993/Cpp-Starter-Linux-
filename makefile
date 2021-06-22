@@ -2,9 +2,9 @@
 CC      := gcc
 CFLAGS  := -g -Wall -Werror -std=c99
 # g++ compiler 參數
-CXX     := g++
-CXXFLAG := -Wall -Werror -std=c++17
-
+CXX     := g++ 
+CXXFLAG := -Wall -Werror -std=c++17 -pedantic
+# CXXFLAG 可以加 -pedantic 告訴 G++ follow C++ rule.
 
 # 宣告 source 資料夾
 SRC_DIRS = ./source

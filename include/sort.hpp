@@ -6,6 +6,7 @@ class SortMachine {
     public:
         virtual void sort (int arr[], size_t arrSize) { return; };
         void show (int arr[], size_t arrSize);
+        void SelfTest ();
 };
 
 class QuickSort : public SortMachine {

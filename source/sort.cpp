@@ -1,10 +1,24 @@
-#include "class.hpp"
+#include "sort.hpp"
 
 void SortMachine::show (int arr[], size_t arrSize)
 {
     for (size_t i = 0; i < arrSize; i++)
         std::cout << arr[i] << " ";
     std::cout << std::endl;
+}
+
+void SortMachine::SelfTest ()
+{
+    int arr[] = { 6, 5, 2, 4, 3, 1 };
+    // int arr[] = { 10, 80, 30, 90, 40, 50, 70 };
+    size_t arrSize = sizeof(arr)/sizeof(int);
+    SortMachine * mySortMachine;
+    QuickSort myQuickSort;
+    mySortMachine = &myQuickSort;
+    
+    mySortMachine->show(arr, arrSize);
+    mySortMachine->sort(arr, arrSize);
+    mySortMachine->show(arr, arrSize);
 }
 
 // A utility function to swap two elements
@@ -25,10 +39,10 @@ int QuickSort::partition (int arr[], int low, int high)
     int pivot = arr[high];
     int partitionIndex = low;
 
-    for (int i = low; i <= high; i++) {
+    for (int i = low; i <= high; ++i) {
         if ( arr[i] < pivot ) {
             swap (&arr[partitionIndex], &arr[i]);
-            partitionIndex++;
+            ++partitionIndex;
         }
     }
     swap (&arr[high], &arr[partitionIndex]);
