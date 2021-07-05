@@ -19,9 +19,6 @@ public:
             int preMax = dp[i-3] > dp[i-2] ? dp[i-3] : dp[i-2];
             dp[i] = preMax + nums[i];
         }
-        for (auto&n:dp)
-            cout << n << " ";
-        cout << endl;
         return dp[size-1] > dp[size-2] ? dp[size-1] : dp[size-2];
     }
 };
