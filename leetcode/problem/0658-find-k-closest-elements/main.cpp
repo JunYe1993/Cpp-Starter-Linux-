@@ -21,6 +21,8 @@ class Solution {
     }
 public:
     vector<int> findClosestElements(vector<int>& arr, int k, int x) {
+        int start = getClosestIndex(arr, x);
+        
         return {getClosestIndex(arr, x)};
     }
 };
