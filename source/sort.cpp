@@ -39,7 +39,7 @@ int QuickSort::partition (int arr[], int low, int high)
     int pivot = arr[high];
     int partitionIndex = low;
 
-    for (int i = low; i <= high; ++i) {
+    for (int i = low; i < high; ++i) {
         if ( arr[i] < pivot ) {
             swap (&arr[partitionIndex], &arr[i]);
             ++partitionIndex;

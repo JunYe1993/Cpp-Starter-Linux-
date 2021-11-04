@@ -59,5 +59,16 @@ int main()
     cout << num << " ";
   cout << endl;
   cout << "Hi" << endl;
+
+
+  double profit = 0;
+  for (int i = 0; i < 20; ++i) {
+    profit *= 1.07;
+    profit += 1;
+  }
+  cout << profit    << endl;
+  cout << profit/20 << endl;
+
+
   return 0;
 }

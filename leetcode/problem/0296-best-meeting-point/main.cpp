@@ -34,8 +34,8 @@ public:
         int total = 0;
         int xMedian = x.size()/2;
         int yMedian = y.size()/2;
-        total += (x.size() % 2) ? getDistance(x, x[xMedian]):min(getDistance(x, x[xMedian]), getDistance(x, x[xMedian-1]));
-        total += (y.size() % 2) ? getDistance(y, y[yMedian]):min(getDistance(y, y[yMedian]), getDistance(y, y[yMedian-1]));
+        total += getDistance(x, x[xMedian]);
+        total += getDistance(y, y[yMedian]);
 
         return total;
     }

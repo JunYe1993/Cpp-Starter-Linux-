@@ -8,16 +8,15 @@ using namespace std;
 class Solution {
 public:
     int findMaxConsecutiveOnes(vector<int>& nums) {
-        int max = 0, count = 0;
-        for (auto&n:nums) {
-            if (n == 1) {
-                if (++count > max)
-                    max = count;
-            }
-            else
+        int ans = 0, count = 0;
+        for (auto & n : nums) {
+            if (n == 1) ++count;
+            else {
+                ans = max (ans, count);
                 count = 0;
+            }
         }
-        return max;
+        return max (ans, count);
     }
 };
 

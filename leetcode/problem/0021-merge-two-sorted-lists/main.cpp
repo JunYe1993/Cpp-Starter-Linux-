@@ -16,12 +16,15 @@ struct ListNode {
 class Solution {
 public:
     ListNode* mergeTwoLists(ListNode* l1, ListNode* l2) {
+        
         if (l1 == nullptr) return l2;
         if (l2 == nullptr) return l1;
         
         ListNode root = ListNode(0);
 		ListNode *ptr = &root;
+        
         while (l1 != nullptr && l2 != nullptr) {
+
             if (l1->val < l2->val) {
                 ptr->next = l1;
                 ptr = ptr->next;
