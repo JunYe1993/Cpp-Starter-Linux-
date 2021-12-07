@@ -14,7 +14,6 @@ public:
             if (prices[i] > 0)
                 profit += prices[i];
         }
-        prices.pop_back();
         return profit;
     }
 };

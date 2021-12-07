@@ -7,7 +7,7 @@ using namespace std;
 
 class Solution {
 public:
-    int maxSubArray (vector<int>& nums) {
+    int maxSubArrayQ (vector<int>& nums) {
         int sum = 0, max = -1000000;
         size_t i;
         for (i = 0; i < nums.size(); ++i) {
@@ -17,6 +17,16 @@ public:
         }   
         return max;
     }
+
+    int maxSubArray (vector<int>& nums) {
+        int sum = 0, res = 0;
+        for (auto&n:nums) {
+            sum += n;
+            res = max(res, sum);
+            sum = (sum < 0) ? 0 : sum;
+        }
+        return res;
+    } 
 };
 
 int main() {
