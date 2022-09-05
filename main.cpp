@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdexcept>
+#include <vector>
 #include "sort.hpp"
 #include "learning.hpp"
 
@@ -41,34 +42,42 @@ void throwTestTest () {
       if (!cin || c == 'n')
         break;      // break out of the while loop
     }
-}
+  }
 }
 
+
+template <typename T>
+int get_size(const std::vector<T> &first) {
+  return (int)first.size();
+}
+
+template <typename T, typename... Args>
+int get_size(const std::vector<T> &first, const Args&... args)
+{
+  return (int)(first.size() + get_size(args...));
+}
+
+template <typename T>
+void add_element(std::vector<T> &clients, T data) {
+  clients.push_back(data);
+}
+
+template <typename T>
+void pop_element(std::vector<T> &clients, int index) {
+  auto it = clients.begin() + index;
+  clients.erase(it);
+}
 
 
 int main()
 {
   printGreeting();
-  QuickSort sort = QuickSort();
-  int arr[] = {-1, 0, 1, 2, -1, -4};
-  for (auto &num : arr)
-    cout << num << " ";
-  cout << endl;
-  sort.sort(arr, 6);
-  for (auto &num : arr)
-    cout << num << " ";
-  cout << endl;
-  cout << "Hi" << endl;
+  vector<int> a = {1, 2, 3};
+  vector<char> b = {'1', '2', '3'};
 
-
-  double profit = 0;
-  for (int i = 0; i < 20; ++i) {
-    profit *= 1.07;
-    profit += 1;
-  }
-  cout << profit    << endl;
-  cout << profit/20 << endl;
-
+  cout << get_size(a) << endl;
+  cout << get_size(b) << endl;
+  cout << get_size(a, b) << endl;
 
   return 0;
 }
