@@ -27,7 +27,7 @@ public:
             --it;
             v.pop_back();
         }
-        
+
         return v.size();
     }
     int findIntegers(int num) {
