@@ -2,7 +2,7 @@
 CC      := gcc
 CFLAGS  := -g -Wall -Werror -std=c99
 # g++ compiler 參數
-CXX     := g++ 
+CXX     := g++
 CXXFLAG := -Wall -Werror -std=c++17 -pedantic
 # CXXFLAG 可以加 -pedantic 告訴 G++ follow C++ rule.
 
@@ -19,13 +19,12 @@ OBJS := $(addsuffix .o,$(notdir $(SRCS))) main.o
 # obj  := $(patsubst %.cpp,%.o,$(obj))
 
 # include 參數
-INC_DIRS  := ./include 
+INC_DIRS  := ./include
 INC_FLAGS := $(addprefix -I,$(INC_DIRS))
-
 all: program
 
 program: $(OBJS)
-	$(CXX) $(CXXFLAG) $(OBJS) -o $@ 
+	$(CXX) $(CXXFLAG) $(OBJS) -lssl -lcrypto -o $@
 
 main.o: main.cpp
 	$(CXX) $(INC_FLAGS) $(CXXFLAG) -c $< -o $@
