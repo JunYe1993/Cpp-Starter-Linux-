@@ -2,39 +2,47 @@
 #include <algorithm>
 #include <string>
 #include <vector>
-#include <set>
+#include <unordered_set>
 
 using namespace std;
 
 class Solution {
-    int rows, cols;
-    bool isValid(int i, int j) {
-        return (i >= 0 && j >= 0 && i < rows && j < cols);
-    }
-
 public:
-    bool isToeplitzMatrix(vector<vector<int>>& matrix) {
+    bool containsNearbyDuplicate(vector<int>& nums, int k) {
 
-        rows = matrix.size();
-        cols = matrix[0].size();
+        if (k == 0) return false;
+        unordered_set<int> knums;
 
-        for (int i = 1; i < rows; ++i) {
-            for (int j = 1; j < cols; ++j) {
-                if (isValid(i-1, j-1))
-                    if (matrix[i][j] != matrix[i-1][j-1])
-                        return false;
+        for (size_t i = 0; i < nums.size(); ++i) {
+            if (i < (size_t)k) {
+                if (knums.find(nums[i]) == knums.end())
+                    knums.insert(nums[i]);
+                else
+                    return true;
+            } else {
+                if (knums.find(nums[i]) == knums.end()) {
+                    knums.insert(nums[i]);
+                    knums.erase(nums[i-k]);
+                } else
+                    return true;
             }
         }
-        return true;
+
+        return false;
     }
 };
 
 
 int main () {
     Solution sol;
-    vector<vector<int>> m;
+    vector<int> nums;
 
-    m = {{1,2,3,4},{5,1,2,3},{9,5,1,2}};
-    cout << sol.isToeplitzMatrix(m) << endl;
+    nums = {1,2,3,1};
+    cout << sol.containsNearbyDuplicate(nums, 3) << endl;
+    nums = {1,0,1,1};
+    cout << sol.containsNearbyDuplicate(nums, 1) << endl;
+    nums = {1,2,3,1,2,3};
+    cout << sol.containsNearbyDuplicate(nums, 2) << endl;
+
     return 0;
 }
